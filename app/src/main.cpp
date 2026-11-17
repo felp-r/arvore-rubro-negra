@@ -1,32 +1,25 @@
 #include <iostream>
-#include "../include/arvore.h"
+#include "../include/arvore_rn.h"
 
 using namespace std;
 
 int main(void){
-    NoFLA* raiz = nullptr;
+    ArvoreRN *arvore = criar_arvore();
 
-    inserir(raiz, 70);
-    inserir(raiz, 70);
-    inserir(raiz, 20);
-    inserir(raiz, 20);
-    inserir(raiz, 60);
-    inserir(raiz, 60);
-    inserir(raiz, 40);
-    inserir(raiz, 40);
-    inserir(raiz, 80);
-    inserir(raiz, 80);
-    inserir(raiz, 50);
-    inserir(raiz, 50);
-    inserir(raiz, 30);
-    inserir(raiz, 30);
+    for(int i = 10; i > 0; i--){
+        inserir(arvore, i);
+    }
 
-    NoFLA* aux = buscar(raiz, 40);
 
-    cout << "Pai: " << aux->pai->chave << endl;
-    cout << "Filho: " << aux->chave << endl;
+    exibir_em_ordem(arvore);
+    cout << endl;
+    exibir_arvore_indentada(arvore);
+    cout << endl;
 
-    liberar_arvore(raiz);
+    cout << "Minimo: " << minimo(arvore)->chave << endl;
+    cout << "Maximo: " << maximo(arvore)->chave << endl;
+
+    liberar_arvore(arvore);
 
     return 0;
 }
