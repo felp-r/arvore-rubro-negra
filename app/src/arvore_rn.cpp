@@ -52,6 +52,8 @@ NoFLA *buscar(ArvoreRN *arvore, int valor){
 // Encontra o menor valor
 NoFLA *minimo(ArvoreRN *arvore, NoFLA *no){
     NoFLA *aux;
+
+    // Se for a chamada inicial, comeca pela Raiz
     if(no == nullptr)
         aux = arvore->Raiz;
     else{
@@ -67,6 +69,8 @@ NoFLA *minimo(ArvoreRN *arvore, NoFLA *no){
 // Encontra o maior valor
 NoFLA *maximo(ArvoreRN *arvore, NoFLA *no){
     NoFLA *aux;
+
+    // Se for a chamada inicial, comeca pela Raiz
     if(no == nullptr)
         aux = arvore->Raiz;
     else{
@@ -77,6 +81,46 @@ NoFLA *maximo(ArvoreRN *arvore, NoFLA *no){
         aux = aux->dir;
 
     return aux;
+}
+
+// Retorna a altura da arvore
+int altura(ArvoreRN *arvore, NoFLA *no) {
+    // Se for a chamada inicial, comeca pela Raiz
+    if (no == nullptr) {
+        no = arvore->Raiz;
+    }
+
+    // Caso base: chegou no sentinela NIL
+    if (no == arvore->NIL) {
+        return -1;
+    }
+
+    int esq = altura(arvore, no->esq);
+    int dir = altura(arvore, no->dir);
+
+    if (esq > dir) {
+        return esq + 1;
+    } else {
+        return dir + 1;
+    }
+}
+
+// Retorna o numero de nos
+int nro_nos(ArvoreRN *arvore, NoFLA *no) {
+    // Se for a chamada inicial, comeca pela Raiz
+    if (no == nullptr) {
+        no = arvore->Raiz;
+    }
+
+    // Caso base: chegou no sentinela NIL
+    if (no == arvore->NIL) {
+        return 0;
+    }
+
+    int nosEsq = nro_nos(arvore, no->esq);
+    int nosDir = nro_nos(arvore, no->dir);
+
+    return 1 + nosEsq + nosDir;
 }
 
 
@@ -165,7 +209,7 @@ void inserir(ArvoreRN *arvore, int valor){
             x = x->dir;
         } else {
             // A chave ja existe na arvore
-            cout << "A arvore ja possui um no com esta chave: " << valor << endl;
+            cout << "\nA arvore ja possui um nó com esta chave: " << valor << "\n";
             return;
         }
     }
@@ -466,8 +510,10 @@ void exibir_arvore_indentada(ArvoreRN *arvore, NoFLA *no, int nivel){
 
     cout << "|-- " << no->chave << "["
          << (no->cor == PRETO ? "P" : "V")
-         << "]" << endl;
+         << "]\n";
 
     exibir_arvore_indentada(arvore, no->esq, nivel + 1);
     exibir_arvore_indentada(arvore, no->dir, nivel + 1);
 }
+
+
