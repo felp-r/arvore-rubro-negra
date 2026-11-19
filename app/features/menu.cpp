@@ -1,5 +1,11 @@
 #include <iostream>
+
 #include "../include/menu.h"
+#include "../include/insercao.h"
+#include "../include/remocao.h"
+#include "../include/busca.h"
+#include "../include/verificacao.h"
+#include "../include/persistencia.h"
 
 using namespace std;
 
@@ -108,14 +114,26 @@ void menu(ArvoreRN *arvore){
             }
             
             case 8:{
+                if(verificar_arvore(arvore))
+                    cout << "Árvore Rubro-Negra válida!\n";
+                else
+                    cout << "Árvore Rubro-Negra inválida!\n";
+
                 break;
             }
 
             case 9:{
+                string nomeArquivo;
+                cout << "Digite o nome do arquivo: ";
+                cin >> nomeArquivo;
+                verificar_arquivo(nomeArquivo);
                 break;
             }
 
             case 10:{
+                string nomeArquivo;
+                cout << "Digite o nome do arquivo: ";
+                cin >> nomeArquivo;
                 break;
             }
 
