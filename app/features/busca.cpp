@@ -26,7 +26,7 @@ NoFLA *minimo(ArvoreRN *arvore, NoFLA *no){
         aux = no;
     }
 
-    while (aux->esq != arvore->NIL)
+    while(aux->esq != arvore->NIL)
         aux = aux->esq;
 
     return aux;
@@ -43,43 +43,43 @@ NoFLA *maximo(ArvoreRN *arvore, NoFLA *no){
         aux = no;
     }
 
-    while (aux->dir != arvore->NIL)
+    while(aux->dir != arvore->NIL)
         aux = aux->dir;
 
     return aux;
 }
 
 // Retorna a altura da arvore
-int altura(ArvoreRN *arvore, NoFLA *no) {
+int altura(ArvoreRN *arvore, NoFLA *no){
     // Se for a chamada inicial, comeca pela Raiz
-    if (no == nullptr) {
+    if(no == nullptr){
         no = arvore->Raiz;
     }
 
     // Caso base: chegou no sentinela NIL
-    if (no == arvore->NIL) {
+    if(no == arvore->NIL){
         return -1;
     }
 
     int esq = altura(arvore, no->esq);
     int dir = altura(arvore, no->dir);
 
-    if (esq > dir) {
+    if(esq > dir){
         return esq + 1;
-    } else {
+    }else{
         return dir + 1;
     }
 }
 
 // Retorna o numero de nos
-int nro_nos(ArvoreRN *arvore, NoFLA *no) {
+int nro_nos(ArvoreRN *arvore, NoFLA *no){
     // Se for a chamada inicial, comeca pela Raiz
-    if (no == nullptr) {
+    if(no == nullptr){
         no = arvore->Raiz;
     }
 
     // Caso base: chegou no sentinela NIL
-    if (no == arvore->NIL) {
+    if(no == arvore->NIL){
         return 0;
     }
 
