@@ -123,17 +123,18 @@ void menu(ArvoreRN *arvore){
             }
 
             case 9:{
-                string nomeArquivo;
+                string nome_arquivo;
                 cout << "Digite o nome do arquivo: ";
-                cin >> nomeArquivo;
-                verificar_arquivo(nomeArquivo);
+                cin >> nome_arquivo;
+                salvar_arvore(arvore, nome_arquivo);
                 break;
             }
 
             case 10:{
-                string nomeArquivo;
+                string nome_arquivo;
                 cout << "Digite o nome do arquivo: ";
-                cin >> nomeArquivo;
+                cin >> nome_arquivo;
+                carregar_arvore(arvore, nome_arquivo);
                 break;
             }
 
